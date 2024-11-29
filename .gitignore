@@ -1,3 +1,6 @@
 obj/
 
+*.so
 tmp*
+*.out
+.bash_history

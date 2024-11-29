@@ -1,4 +1,4 @@
-NAME := tmp
+NAME := libft_malloc.so
 
 CC := cc
 CFLAGS := -Wall -Wextra -Werror
@@ -14,7 +14,7 @@ OBJ_DIR := $(addsuffix .keep, $(OBJ_DIR))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) -shared -fPIC -o $@ $^
 
 obj/%.o: src/%.c $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(DEPSFLAGS) -c -o $@ $<
@@ -27,10 +27,16 @@ $(OBJ_DIR):
 
 clean:
 	rm -f $(OBJ) $(DEP)
+	rm -rf obj
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+test: $(NAME)
+	mkdir -p tmp
+	gcc -o tmp/tmp.out test/main.c
+	LD_PRELOAD=./$(NAME) ./tmp/tmp.out
+
+.PHONY: all clean fclean re test
