@@ -4,8 +4,8 @@ version: "3"
 
 tasks:
   test:
+    aliases: [t]
     cmds:
-      - docker compose exec vm make re
       - docker compose exec vm make test
 
   up:

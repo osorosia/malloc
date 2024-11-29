@@ -4,7 +4,7 @@ CC := cc
 CFLAGS := -Wall -Wextra -Werror
 DEPSFLAGS := -MMD -MP
 
-SRC := $(wildcard src/*.c)
+SRC := $(wildcard src/*.c src/*/*.c)
 OBJ := $(SRC:src/%.c=obj/%.o)
 DEP := $(SRC:src/%.c=obj/%.d)
 

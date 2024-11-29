@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 int main() {
+    write(1, "============\n", 13);
     void* ptr = malloc(10);
-    printf("ptr: %p\n", ptr);
     free(ptr);
 
     return 0;
